@@ -1,0 +1,11 @@
+body {
+    display: contents;
+}
+
+#mapid {
+    height: 100vh;
+}
+
+:root {
+    --mdc-theme-primary: #202124
+}
