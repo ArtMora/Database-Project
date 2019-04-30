@@ -6,4 +6,4 @@ Team Members:
   - Simon Woldemichael
   - Annie Vo
   - Arturo Mora
-  - Sahi 
+  - Sahi Alsakani
