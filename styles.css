@@ -1,5 +1,7 @@
 body {
     display: contents;
+    height: 100%;
+    width: 100%;
 }
 
 #mapid {
@@ -7,5 +9,14 @@ body {
 }
 
 :root {
-    --mdc-theme-primary: #202124
+    --mdc-theme-primary: #202124 !important;
+}
+
+.mdc-list-item--activated, .material-icons.mdc-list-item__graphic {
+    color: #D32F2F !important;
+}
+
+.mdc-top-app-bar--short .mdc-top-app-bar__row {
+    margin-top: 15px;
+    padding-right: 49px;
 }
