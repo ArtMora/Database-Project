@@ -17,7 +17,7 @@ document.getElementById("code-repos").addEventListener("click", function () {
 
 });
 
-if (window.location.pathname !== "/comparisons.html") {
+if (window.location.pathname !== "/comparisons.html" && window.location.pathname != "/Database-Project/comparisons.html") {
     var mymap = L.map("mapid").setView([39.82835, -98.5816684], 5);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=sk.eyJ1Ijoic3dvbGRlbWkiLCJhIjoiY2p2NDh0aTF5MHV0MjN5bDhnNDNndGtldiJ9.GquKMSt7Yj1vi25prmZUlA', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
