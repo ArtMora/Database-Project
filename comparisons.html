@@ -1,108 +1,118 @@
 <head>
-        <title>Air Pollution in the United States</title>
-        <script src="https://code.jquery.com/jquery-3.4.0.min.js"
-            integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-            integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-            crossorigin="" />
-        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-            integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-            crossorigin=""></script>
-        <link rel="stylesheet" href="styles.css" />
-    </head>
-    
-    <body>
-        <div class="mdc-drawer mdc-drawer--dismissible">
-            <div class="mdc-drawer__content">
-                <div class="mdc-list">
-                    <a class="mdc-list-item"
-                        href="https://docs.google.com/presentation/d/e/2PACX-1vSb-SnZKCgB8HeCNlKYuuvUWPGaihOW4iHOvNOaItmBZs2ngztoT5CK1T0SVZLTRl5VC1Q7UGvfh3zf/pub?start=false&loop=false&delayms=5000">
-                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">crop_landscape</i>
-                        <span class="mdc-list-item__text">Presentation</span>
-                    </a>
-                    <a class="mdc-list-item mdc-list-item--activated" href="http://35.226.19.21/api/marker"
-                        aria-selected="true">
-                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">info_outline</i>
-                        <span class="mdc-list-item__text">API</span>
-                    </a>
-                    <a class="mdc-list-item" href="https://www.kaggle.com/sogun3/uspollution">
-                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">data_usage</i>
-                        <span class="mdc-list-item__text">Dataset</span>
-                    </a>
-                    <a class="mdc-list-item" id="code-repos" href="#">
-                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">code</i>
-                        <span class="mdc-list-item__text mdc-menu-surface--anchor">Code Repositories</span>
-                        <div class="mdc-menu mdc-menu-surface">
-                            <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
-                                <li onclick="location.href = 'https://github.com/CS4354/pollutionApiDotNet';"
-                                    class="mdc-list-item" role="menuitem">
-                                    <span class="mdc-list-item__text">C# API</span>
-                                </li>
-                                <li onclick="location.href = 'https://github.com/CS4354/dataMySQL';" class="mdc-list-item"
-                                    role="menuitem">
-                                    <span class="mdc-list-item__text">Data Cleaning</span>
-                                </li>
-                                <li onclick="location.href = 'https://github.com/ArtMora/Database-Project';"
-                                    class="mdc-list-item" role="menuitem">
-                                    <span class="mdc-list-item__text">Frontend</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </a>
-                    <a class="mdc-list-item" href="/index.html">
-                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">map</i>
-                        <span class="mdc-list-item__text">Map</span>
-                    </a>
-                    <a class="mdc-list-item" href="/comparisons.html">
-                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">graphic_eq</i>
-                        <span class="mdc-list-item__text">Graphs</span>
-                    </a>
-                    <a class="mdc-list-item" id="closer">
-                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">close</i>
-                        <span class="mdc-list-item__text">Close</span>
-                    </a>
-                </div>
+    <title>Air Pollution in the United States</title>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+        crossorigin=""></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="mdc-drawer mdc-drawer--dismissible">
+        <div class="mdc-drawer__content">
+            <div class="mdc-list">
+                <a class="mdc-list-item"
+                    href="https://docs.google.com/presentation/d/e/2PACX-1vSb-SnZKCgB8HeCNlKYuuvUWPGaihOW4iHOvNOaItmBZs2ngztoT5CK1T0SVZLTRl5VC1Q7UGvfh3zf/pub?start=false&loop=false&delayms=5000">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">crop_landscape</i>
+                    <span class="mdc-list-item__text">Presentation</span>
+                </a>
+                <a class="mdc-list-item mdc-list-item--activated" href="http://35.226.19.21/api/marker"
+                    aria-selected="true">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">info_outline</i>
+                    <span class="mdc-list-item__text">API</span>
+                </a>
+                <a class="mdc-list-item" href="https://www.kaggle.com/sogun3/uspollution">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">data_usage</i>
+                    <span class="mdc-list-item__text">Dataset</span>
+                </a>
+                <a class="mdc-list-item" id="code-repos" href="#">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">code</i>
+                    <span class="mdc-list-item__text mdc-menu-surface--anchor">Code Repositories</span>
+                    <div class="mdc-menu mdc-menu-surface">
+                        <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+                            <li onclick="location.href = 'https://github.com/CS4354/pollutionApiDotNet';"
+                                class="mdc-list-item" role="menuitem">
+                                <span class="mdc-list-item__text">C# API</span>
+                            </li>
+                            <li onclick="location.href = 'https://github.com/CS4354/dataMySQL';" class="mdc-list-item"
+                                role="menuitem">
+                                <span class="mdc-list-item__text">Data Cleaning</span>
+                            </li>
+                            <li onclick="location.href = 'https://github.com/ArtMora/Database-Project';"
+                                class="mdc-list-item" role="menuitem">
+                                <span class="mdc-list-item__text">Frontend</span>
+                            </li>
+                        </ul>
+                    </div>
+                </a>
+                <a class="mdc-list-item" href="/index.html">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">map</i>
+                    <span class="mdc-list-item__text">Map</span>
+                </a>
+                <a class="mdc-list-item" href="/comparisons.html">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">graphic_eq</i>
+                    <span class="mdc-list-item__text">Graphs</span>
+                </a>
+                <a class="mdc-list-item" id="closer">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">close</i>
+                    <span class="mdc-list-item__text">Close</span>
+                </a>
             </div>
         </div>
-    
-        <div class="mdc-drawer-app-content">
-            <header class="mdc-top-app-bar app-bar" id="app-bar">
-                <div class="mdc-top-app-bar__row">
-                    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                        <a href="#" class="demo-menu material-icons mdc-top-app-bar__navigation-icon">menu</a>
-                        <span class="mdc-top-app-bar__title">Air Pollution in the United States - 2000 to 2016</span>
-                    </section>
-                    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
-                        <div class="mdc-slider mdc-slider--discrete" tabindex="0" role="slider" aria-valuemin="2000"
-                            aria-valuemax="2016" aria-valuenow="2000" data-step="1" aria-label="Select Year">
-                            <div class="mdc-slider__track-container">
-                                <div class="mdc-slider__track"></div>
-                            </div>
-                            <div class="mdc-slider__thumb-container">
-                                <div class="mdc-slider__pin">
-                                    <span class="mdc-slider__pin-value-marker"></span>
-                                </div>
-                                <svg class="mdc-slider__thumb" width="21" height="21">
-                                    <circle cx="10.5" cy="10.5" r="7.875"></circle>
-                                </svg>
-                                <div class="mdc-slider__focus-ring"></div>
-                            </div>
+    </div>
+
+    <div class="mdc-drawer-app-content">
+        <header class="mdc-top-app-bar app-bar" id="app-bar">
+            <div class="mdc-top-app-bar__row">
+                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                    <a href="#" class="demo-menu material-icons mdc-top-app-bar__navigation-icon">menu</a>
+                    <span class="mdc-top-app-bar__title">Air Pollution in the United States - 2000 to 2016</span>
+                </section>
+                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+                    <div class="mdc-slider mdc-slider--discrete" tabindex="0" role="slider" aria-valuemin="2000"
+                        aria-valuemax="2016" aria-valuenow="2000" data-step="1" aria-label="Select Year">
+                        <div class="mdc-slider__track-container">
+                            <div class="mdc-slider__track"></div>
                         </div>
-                    </section>
-                </div>
-            </header>
-    
-            <main class="main-content" id="main-content">
-                <div class="mdc-top-app-bar--fixed-adjust">
-                </div>
-            </main>
-        </div>
-    
-        <script defer src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-        <script defer src="main.js"></script>
-    
-    </body>
-    
-    </html>
+                        <div class="mdc-slider__thumb-container">
+                            <div class="mdc-slider__pin">
+                                <span class="mdc-slider__pin-value-marker"></span>
+                            </div>
+                            <svg class="mdc-slider__thumb" width="21" height="21">
+                                <circle cx="10.5" cy="10.5" r="7.875"></circle>
+                            </svg>
+                            <div class="mdc-slider__focus-ring"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </header>
+
+        <style>
+            .bar {
+                fill: steelblue;
+            }
+        </style>
+        <main class="main-content" id="main-content">
+            <div class="mdc-top-app-bar--fixed-adjust">
+                <svg width="600" height="500" id="NO2"></svg>
+                <svg width="600" height="500" id="O3"></svg>
+                <svg width="600" height="500" id="SO2"></svg>
+                <svg width="600" height="500" id="CO"></svg>
+            </div>
+        </main>
+    </div>
+
+    <script defer src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <script defer src="main.js"></script>
+</body>
+
+</html>
